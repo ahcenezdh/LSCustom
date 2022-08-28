@@ -344,6 +344,7 @@ local function getModInfo(mod)
 end
 
 local function saveVehicleData(properties)
+    --todo: need to do a check if the vehicle is in the table owned_vehicles
     MySQL.update("UPDATE `owned_vehicles` SET vehicle = ? WHERE plate = ?", {
         json.encode(properties),
         properties.plate
