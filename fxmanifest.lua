@@ -1,5 +1,5 @@
 fx_version 'cerulean'
-author 'SpaceV'
+author 'Space V'
 use_fxv2_oal 'yes'
 lua54 'yes'
 game { 'gta5' }
