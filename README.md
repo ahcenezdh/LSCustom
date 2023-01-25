@@ -7,3 +7,7 @@ A LSCustom script created by me for the Star'Island server
 
 
 Here is a <a href="https://www.youtube.com/watch?v=dXeSitIHhio&t=192s">preview</a> of the LSCustom script
+
+Credits:
+  - RageUI (Interface)
+  - OxLib (SetVehicleProperties function)
