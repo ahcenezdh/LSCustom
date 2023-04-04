@@ -147,47 +147,35 @@ end
 
 local function isPossibleToSetupMods(vehicle, modType)
     SetVehicleModKit(vehicle, 0)
-    local Enable = GetNumVehicleMods(vehicle, modType)
-    if (Enable ~= -1) then
-        return true
-    else
-        return false
-    end
+    local enable = GetNumVehicleMods(vehicle, modType)
+    return enable ~= -1
 end
+
 
 local function arenotNeons(vehicle)
     SetVehicleModKit(vehicle, 0)
-    local isNeon = IsVehicleNeonLightEnabled(vehicle)
-    if not (isNeon) then return true else return false end
+    return not IsVehicleNeonLightEnabled(vehicle)
 end
 
 local function returnLabelMods(vehicle, myType, modValue)
     SetVehicleModKit(vehicle, 0)
     local txt = GetLabelText(GetModTextLabel(vehicle, myType, modValue))
-    if (modValue == -1) then
-        txt = "Par Défault"
-    end
-    if (txt == "NULL") then
-        txt = "Pièce non reconnue"
-    end
+    txt = modValue == -1 and "Par Défault" or (txt == "NULL" and "Pièce non reconnue" or txt)
     return txt
 end
 
+
 local function priceJoat(value, mutliplier, typeCustom)
-    local price
-    local breaking = false
     for _, v in pairs(SpaceLSCustom.Category) do
         if v.id == GetVehicleClass(VehicleToCustom) then
             for nameType, typeMultiplier in pairs(v.multiplier) do
-                if (tostring(nameType) == typeCustom) then
-                    price = ( (value + 5) * mutliplier ) * typeMultiplier
-                    breaking = true
+                if tostring(nameType) == typeCustom then
+                    return ((value + 5) * mutliplier) * typeMultiplier
                 end
             end
         end
-        if (breaking) then break end
     end
-    return price
+    return nil
 end
 
 
