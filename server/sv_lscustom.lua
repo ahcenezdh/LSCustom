@@ -7,22 +7,22 @@ RegisterNetEvent('getVehicleClass', function(vehicleClass)
     end
 end)
 
-local function priceJoat(value, mutliplier, typeCustom)
+local function priceJoat(value, multiplier, typeCustom)
     local price
-    local breaking = false
-    for _, v in pairs(SpaceLSCustom.Category) do
-        if v.id == vehClass then
-            for nameType, typeMultiplier in pairs(v.multiplier) do
-                if (tostring(nameType) == typeCustom) then
-                    price = ( (value + 5) * mutliplier ) * typeMultiplier
-                    breaking = true
-                end
+
+    for _, category in ipairs(SpaceLSCustom.Category) do
+        if category.id == vehClass then
+            local typeMultiplier = category.multiplier[typeCustom]
+            if typeMultiplier then
+                price = ((value + 5) * multiplier) * typeMultiplier
+                break
             end
         end
-        if (breaking) then break end
     end
+
     return price
 end
+
 
 local function getModInfo(mod)
     local isGood, modPrice
