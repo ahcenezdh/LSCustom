@@ -3,7 +3,7 @@ function ToggleDoor(vehicle, door)
         if GetVehicleDoorAngleRatio(vehicle, door) > 0.0 then
             SetVehicleDoorShut(vehicle, door, false)
         else
-            SetVehicleDoorOpen(vehicle, door, false)
+            SetVehicleDoorOpen(vehicle, door, false, false)
         end
     end
 end
@@ -22,7 +22,6 @@ end)
 RegisterNetEvent('esx:setJob', function(job)
     ESX.PlayerData.job = job
 end)
-
 
 
 saveOldVehicle = {}

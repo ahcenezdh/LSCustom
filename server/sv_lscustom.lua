@@ -367,11 +367,9 @@ ESX.RegisterServerCallback('space:lscustom::sellMod', function(source, cb, mod)
     local xPlayer = ESX.GetPlayerFromId(source)
     if SpaceLSCustom.jobsRights[xPlayer.getJob().name] then -- todo need to check if he is on the coords.
         local modCheck, modPrice = getModInfo(mod)
-        print(modCheck, modPrice)
         if (modCheck) then
             TriggerEvent('esx_addonaccount:getSharedAccount', 'society_mechanic', function(account)
                 if (account.money >= modPrice) then
-                    print("cheer")
                     account.removeMoney(modPrice)
                     cb(true)
                 else
