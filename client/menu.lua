@@ -138,7 +138,7 @@ local menusEventClosed = {
     sMetauxMenu, colorsMenu
 }
 
-for _, menu in ipairs(menusToOptimize) do
+for _, menu in ipairs(menusEventClosed) do
     menu.Closed = function()
         ESX.Game.SetVehicleProperties(VehicleToCustom, saveOldVehicle.customVeh)
     end
